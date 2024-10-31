@@ -134,7 +134,30 @@ helm status
 helm upgrade db1 bitnami/mysql --reuse-values
 ```
 #### Ass
+```bash
+helm search repo tomcat
+helm install myserver bitnami/tomcat
+[root@kubeadm ~]# helm list
+NAME    	NAMESPACE	REVISION	UPDATED                                	STATUS  	CHART        	APP VERSION
+myserver	default  	1       	2024-10-31 15:55:35.218546206 +0000 UTC	deployed	tomcat-11.3.0	10.1.31    
 
+vi ass.yml
+
+tomcatPassword: test
+service:
+   type: NodePort
+   nodePorts:
+     http: 30007
+     
+helm status myserver
+
+helm upgrade myserver bitnami/tomcat --values ass.yml 
+
+[root@kubeadm ~]# kubectl get svc
+NAME              TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
+kubernetes        ClusterIP   10.96.0.1      <none>        443/TCP        40d
+myserver-tomcat   NodePort    10.96.14.176   <none>        80:30007/TCP   9m5s
+```
 
 
 
