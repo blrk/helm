@@ -120,5 +120,20 @@ WARNING: There are "resources" sections in the chart not set. Using "resourcesPr
 ```bash
 helm uninstall db1
 ```
+* Update helm charts in the local repo
+```bash
+helm repo update
+```
+* Upgrade the helm charts
+```bash
+helm status
+```
+* use the upgrade commands
+* Reuse values during upgrade
+```base
+helm upgrade db1 bitnami/mysql --reuse-values
+```
+* 
+
 
 
