@@ -70,7 +70,7 @@ bitnami/mysql         	11.1.13      	8.4.2      	MySQL is a fast, reliable, scal
 ```bash
 helm install db1 bitnami/mysql
 ```
-
+```bash
 NAME: db1
 LAST DEPLOYED: Sat Aug 17 10:05:16 2024
 NAMESPACE: default
@@ -107,13 +107,18 @@ To connect to your database:
 
       mysql -h db1-mysql.default.svc.cluster.local -uroot -p"$MYSQL_ROOT_PASSWORD"
 
-
-
-
-
-
 WARNING: There are "resources" sections in the chart not set. Using "resourcesPreset" is not recommended for production. For production installations, please set the following values according to your workload needs:
   - primary.resources
   - secondary.resources
 +info https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+```
+* List charts
+  ```bash
+  helm list
+  ```
+* Uninstall
+```bash
+helm uninstall db1
+```
+
 
