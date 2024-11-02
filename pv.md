@@ -21,16 +21,16 @@ UUID=11EB-AD1C        /boot/efi       vfat    defaults,noatime,uid=0,gid=0,umask
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: k8challenge-pv
+  name: local-pv
 spec:
   capacity:
-    storage: 10Gi
+    storage: 20Gi
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Delete
-  storageClassName: local-storage
+  storageClassName: local-pv-sc
   local:
-    path: /local-pv 
+    path: /local-pv
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -38,14 +38,14 @@ spec:
             - key: kubernetes.io/hostname
               operator: In
               values:
-                - k8-challenge
+                - kubeadm-node1
 ```
 * Storage class sc.yml
 ```bash
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: k8challenge-sc
+  name: local-pv-sc
 provisioner: kubernetes.io/no-provisioner
 volumeBindingMode: WaitForFirstConsumer
 ```
@@ -58,11 +58,10 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: k8challenge-sc
+  storageClassName: local-pv-sc
   resources:
     requests:
       storage: 1Gi
-
 ```
 * use pvc in a pod 
 ```bash
