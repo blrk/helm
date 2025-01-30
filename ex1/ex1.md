@@ -66,3 +66,11 @@ NAME    NAMESPACE       REVISION        UPDATED STATUS  CHART   APP VERSION
 ```bash 
 helm list -a | helm list --all
 ```
+* Finding Charts
+```bash
+helm search repo nginx
+NAME                                    CHART VERSION   APP VERSION     DESCRIPTION                                       
+bitnami/nginx                           18.3.5          1.27.3          NGINX Open Source is a web server that can be a...
+bitnami/nginx-ingress-controller        11.6.7          1.12.0          NGINX Ingress Controller is an Ingress controll...
+bitnami/nginx-intel                     2.1.15          0.4.9           DEPRECATED NGINX Open Source for Intel is a lig...
+```
