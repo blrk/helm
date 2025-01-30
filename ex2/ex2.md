@@ -112,5 +112,16 @@ cd mycharts/
 ```
 * Create a chart directory along with the common files and directories used in a chart
 ```bash
-
+helm create app1
 ```
+* Navigate the values.yml files in nginx and app1 chart repos
+```bash
+less mycharts/app1/values.yaml
+less mycharts/nginx/values.yaml 
+```
+* Navigate the Chart.yml files in nginx and app1 chart repos
+```bash
+less mycharts/app1/Chart.yaml
+less mycharts/nginx/Chart.yaml 
+```
+* Naviage the 
