@@ -39,7 +39,7 @@ service:
     http: 8081
     https: 443
 ```
-* Relase the application 
+* Release the application 
 ```bash
 helm install mywebserver mycharts/nginx 
 NAME: mywebserver
@@ -73,7 +73,7 @@ WARNING: There are "resources" sections in the chart not set. Using "resourcesPr
   - resources
 +info https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
 ```
-* List the helm application
+* List the release
 ```bash
 helm list 
 NAME       	NAMESPACE	REVISION	UPDATED                                	STATUS  	CHART       	APP VERSION
@@ -98,6 +98,13 @@ deployment.apps/mywebserver-nginx   1/1     1            1           18m
 NAME                                           DESIRED   CURRENT   READY   AGE
 replicaset.apps/mywebserver-nginx-64445ccf85   1         1         1       18m
 ```
+* Uninstall a release
+```bnash
+helm uninstall mywebserver
+release "mywebserver" uninstalled
+```
+* List the resources in the K8s cluster 
+
 #### Create your first chart 
 
 
