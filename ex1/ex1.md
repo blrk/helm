@@ -39,7 +39,7 @@ helm create --help
 ```bash
 helm repo list
 ```
-* Add a repo
+* Initialize a Helm Chart Repository
 ```bash
 helm repo add bitnami https://charts.bitnami.com/bitnami
 ```
@@ -48,4 +48,21 @@ helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo list
 NAME    URL                               
 bitnami https://charts.bitnami.com/bitnami
+```
+* Perform a repo update
+```bash
+helm repo update 
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "bitnami" chart repository
+Update Complete. ⎈Happy Helming!⎈
+```
+* List the releases 
+```bash
+helm list
+NAME    NAMESPACE       REVISION        UPDATED STATUS  CHART   APP VERSION
+```
+* Note: Lists only the deployed releases in the current namespace by default. It does not show failed, superseded, or deleted releases.
+* Lists all releases, regardless of their status (e.g., DEPLOYED, FAILED, DELETED, SUPERSEDED, etc.).
+```bash 
+helm list -a | helm list --all
 ```
