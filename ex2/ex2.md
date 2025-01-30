@@ -106,5 +106,11 @@ release "mywebserver" uninstalled
 * List the resources in the K8s cluster 
 
 #### Create your first chart 
+* Navigate to the mycharts directory 
+```bash
+cd mycharts/ 
+```
+* Create a chart directory along with the common files and directories used in a chart
+```bash
 
-
+```
