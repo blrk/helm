@@ -124,4 +124,4 @@ less mycharts/nginx/values.yaml
 less mycharts/app1/Chart.yaml
 less mycharts/nginx/Chart.yaml 
 ```
-* Naviage the 
+
