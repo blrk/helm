@@ -58,6 +58,9 @@ livenessProbe:
     - docroot/CHANGELOG.txt
   initialDelaySeconds: 120
 ```
+#### Template function list
+* https://helm.sh/docs/chart_template_guide/function_list/
+
 * 
  
 
