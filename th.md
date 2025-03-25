@@ -35,6 +35,29 @@ data:
 * Function Application: Template functions are applied to these values to perform transformations or calculations.
 * Pipeline Execution: Pipelines chain multiple functions, executing them in sequence.
 * Manifest Generation: The resulting values are inserted into the Kubernetes manifest, generating the final YAML output.
+
+#### Deleting a default key
+* If you need to delete a key from the default values, you may override the value of the key to be null, in which case Helm will remove the key from the overridden values merge.
+* For example, the stable Drupal chart allows configuring the liveness probe, in case you configure a custom image. Here are the default values:
+```bash
+livenessProbe:
+  httpGet:
+    path: /user/login
+    port: http
+  initialDelaySeconds: 120
+```
+* If you try to override the livenessProbe handler to exec instead of httpGet using --set livenessProbe.exec.command=[cat,docroot/CHANGELOG.txt], Helm will coalesce the default and overridden keys together, resulting in the following YAML:
+```bash
+livenessProbe:
+  httpGet:
+    path: /user/login
+    port: http
+  exec:
+    command:
+    - cat
+    - docroot/CHANGELOG.txt
+  initialDelaySeconds: 120
+```
 * 
  
 
