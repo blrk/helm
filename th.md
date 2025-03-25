@@ -61,6 +61,27 @@ livenessProbe:
 #### Template function list
 * https://helm.sh/docs/chart_template_guide/function_list/
 
-* 
+### Flow Control in Helm Templates
+* Helm templates, provide powerful flow control mechanisms to generate Kubernetes manifests.
+* These mechanisms allow you to conditionally include or exclude parts of your YAML based on values, variables, and other conditions.
+ * if/else for creating conditional blocks
+ * with to specify a scope
+ * range, which provides a "for each"-style loop
+* In addition to these, it provides a few actions for declaring and using named template segments:
+ * define declares a new named template inside of your template
+ * template imports a named template
+ * block declares a special kind of fillable template area
+
+#### if Statements
+```bash
+{{- if CONDITION }}
+# YAML content to include if CONDITION is true
+{{- else if CONDITION }}
+# YAML content to include if CONDITION is true
+{{ else }}
+# Default content
+{{- end }}
+```
+
  
 
