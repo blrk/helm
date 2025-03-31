@@ -122,5 +122,15 @@ waiting for deployment to be ready...
   port: {{ $value }}
 {{- end }}
 ```
- 
+
+#### Modifying scope using with
+* This controls variable scoping. Recall that . is a reference to the current scope. So .Values tells the template to find the Values object in the current scope.
+```bash
+{{ with PIPELINE }}
+  # restricted scope
+{{ end }}
+```
+* Scopes can be changed. with can allow you to set the current scope (.) to a particular object.
+* 
+* 
 
