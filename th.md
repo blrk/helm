@@ -82,6 +82,44 @@ livenessProbe:
 # Default content
 {{- end }}
 ```
-
+#### Looping with Range 
+* Loops allow you to iterate over a range of values, creating resources and making decisions based on those values.
+* Creating multiple replicas of a deployment: One of the most common use cases for loops in Helm charts is to create multiple replicas of a deployment. This is useful when you want to scale your application horizontally across multiple nodes. The .Range function can be used to loop over a range of values, creating a replica for each value.
+ ```bash
+{{- range $i := .Values.replicaCount }}
+- name: replica-{{ $i }}
+  image: myorg/myapp:{{ .Values.image.tag }}
+{{- end }}
+```
+* Creating multiple resources of the same type: Another common use case for loops in Helm charts is to create multiple resources of the same type. For example, you might use a loop to create multiple ConfigMaps, each with different configuration values. The .Range function can be used to loop over a range of values, creating a resource for each value.
+ ```bash
+{{- range $i, $value := .Values.configmaps }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-{{ $i }}
+data:
+  {{ $value.key }}: {{ $value.value }}
+{{- end }}
+```
+* Waiting for a specific condition: Sometimes, you may need to wait for a certain condition to be met before proceeding with the next step in your chart. For example, you may need to wait for a deployment to be ready before proceeding with creating additional resources. The .Until function can be used to loop over a range until a certain condition is met.
+```bash
+{{- $name := "mydeployment" -}}
+{{- $ready := false -}}
+{{- until $ready }}
+{{- $status := kubectl get deploy $name -o jsonpath='{.status.conditions[?(@.type=="Ready")].status}' -}}
+{{- if eq $status "True" }}
+{{- $ready = true -}}
+{{- else }}
+waiting for deployment to be ready...
+{{- end }}
+{{- end }}
+* Creating multiple resources based on a list: Sometimes, you may need to create multiple resources based on a list of values. For example, you may have a list of ports that need to be exposed on a service. The .Range function can be used to loop over the list of values, creating a resource for each value.
+```bash
+{{- range $i, $value := .Values.ports }}
+- name: port-{{ $value }}
+  port: {{ $value }}
+{{- end }}
+```
  
 
