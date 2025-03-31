@@ -114,6 +114,7 @@ data:
 waiting for deployment to be ready...
 {{- end }}
 {{- end }}
+```
 * Creating multiple resources based on a list: Sometimes, you may need to create multiple resources based on a list of values. For example, you may have a list of ports that need to be exposed on a service. The .Range function can be used to loop over the list of values, creating a resource for each value.
 ```bash
 {{- range $i, $value := .Values.ports }}
